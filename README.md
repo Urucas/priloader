@@ -1,0 +1,4 @@
+priloader
+=========
+
+pure javascript preloader
