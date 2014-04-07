@@ -15,13 +15,15 @@ function Priloader(elid, params) {
 	this.params.speed = this.params.speed < 1 ? 1 : this.params.speed;
 	this.params.speed = this.params.speed > 5 ? 5 : this.params.speed;
 	
-	console.log(this.params);
+	// console.log(this.params);
 
 	this.src = "spinner.png";
 	this.interval = 80 - this.params.speed*10;
 
 	this.elid = elid;
 	this.el = document.getElementById(elid);
+	this.el.style.width = this.params.size+"px";
+	this.el.style.height = this.params.size+"px";
 
 	this.container = document.createElement("div");
 	this.container.setAttribute("class", "priloader-container");
