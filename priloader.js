@@ -3,11 +3,20 @@ function Priloader(elid, params) {
 
 	params = params || {}
 	this.params = {};
-	this.params.width = params.width || 48;
-	this.params.height = params.height || 48;
+
+	this.params.size = params.size || 48;
+	this.params.size = this.params.size > 168 ? 168 : this.params.size;
+	this.params.size = this.params.size < 24 ? 24 : this.params.size;
+
 	this.params.bgColor = params.bgColor || false;
-	this.params.speed = params.speed || 3; // speed goes from 1 to 5
 	
+	// speed goes from 1 to 5
+	this.params.speed = params.speed || 3;
+	this.params.speed = this.params.speed < 1 ? 1 : this.params.speed;
+	this.params.speed = this.params.speed > 5 ? 5 : this.params.speed;
+	
+	console.log(this.params);
+
 	this.src = "spinner.png";
 	this.interval = 80 - this.params.speed*10;
 
@@ -16,8 +25,8 @@ function Priloader(elid, params) {
 
 	this.container = document.createElement("div");
 	this.container.setAttribute("class", "priloader-container");
-	this.container.style.width = this.params.width+"px";
-	this.container.style.height = this.params.height+"px";
+	this.container.style.width = this.params.size+"px";
+	this.container.style.height = this.params.size+"px";
 	if(this.params.bgColor) {
 		this.container.style.backgroundColor = this.params.bgColor;
 	}
@@ -25,12 +34,12 @@ function Priloader(elid, params) {
 
 	this.spinner = document.createElement("div");
 	this.spinner.setAttribute("class","priloader-spinner");
-	this.spinner.style.width = this.params.width+"px";
-	this.spinner.style.height = this.params.height+"px";
+	this.spinner.style.width = this.params.size+"px";
+	this.spinner.style.height = this.params.size+"px";
 	this.spinner.style.backgroundImage = "url('"+this.src+"')";
 	this.spinner.style.backgroundRepeat = "no-repeat";
 	this.spinner.style.backgroundPosition = "0% 0%";
-	this.spinner.style.backgroundSize = this.params.width+"px "+this.params.height+"px";
+	this.spinner.style.backgroundSize = this.params.size+"px "+this.params.size+"px";
 	this.container.appendChild(this.spinner);
 
 	this.start = function(){
