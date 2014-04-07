@@ -1,24 +1,38 @@
 
 function Priloader(elid, params) {
 
-	this.params = params || {
-		width : 36,
-		height: 36
-	}
-
+	params = params || {}
+	this.params = {};
+	this.params.width = params.width || 36;
+	this.params.height = params.height || 36;
+	this.params.bgColor = params.bgColor || false;
+	console.log(this.params);
 	this.src = "spinner.png";
 
 	this.elid = elid;
 	this.el = document.getElementById(elid);
-	this.el.style.display = "none";
-	this.el.style.width = this.params.width+"px";
-	this.el.style.height = this.params.height+"px";
-	this.el.style.backgroundImage = "url('"+this.src+"')";
-	this.el.style.backgroundRepeat = "no-repeat";
-	this.el.style.backgroundPosition = "0% 0%";
-	this.el.style.backgroundSize = "36px 36px";
 
-	this.interval = 50;
+	this.container = document.createElement("div");
+	this.container.setAttribute("class", "priloader-container");
+	this.container.style.width = this.params.width+"px";
+	this.container.style.height = this.params.height+"px";
+	if(this.params.bgColor) {
+		this.container.style.backgroundColor = this.params.bgColor;
+	}
+	this.el.appendChild(this.container);
+
+	this.spinner = document.createElement("div");
+	this.spinner.setAttribute("class","priloader-spinner");
+	this.spinner.style.width = this.params.width+"px";
+	this.spinner.style.height = this.params.height+"px";
+	this.spinner.style.backgroundImage = "url('"+this.src+"')";
+	this.spinner.style.backgroundRepeat = "no-repeat";
+	this.spinner.style.backgroundPosition = "0% 0%";
+	this.spinner.style.backgroundSize = "36px 36px";
+
+	this.container.appendChild(this.spinner);
+
+	this.interval = 70;
 
 	this.start = function(){
 		var instance = this;
@@ -36,10 +50,11 @@ function Priloader(elid, params) {
 	this.deg = 0;
 	this.animate = function() {
 		this.deg = this.deg + 10 > 360 ? 0 : this.deg + 10;	
-		this.el.style.webkitTransform = 'rotate('+this.deg+'deg)'; 
-	    this.el.style.mozTransform    = 'rotate('+this.deg+'deg)'; 
-    	this.el.style.msTransform     = 'rotate('+this.deg+'deg)'; 
-	    this.el.style.oTransform      = 'rotate('+this.deg+'deg)'; 
-    	this.el.style.transform       = 'rotate('+this.deg+'deg)'; 
+		this.spinner.style.webkitTransform = 'rotate('+this.deg+'deg)'; 
+	    this.spinner.style.mozTransform    = 'rotate('+this.deg+'deg)'; 
+    	this.spinner.style.msTransform     = 'rotate('+this.deg+'deg)'; 
+	    this.spinner.style.oTransform      = 'rotate('+this.deg+'deg)'; 
+    	this.spinner.style.transform       = 'rotate('+this.deg+'deg)'; 
 	}
 }
+
