@@ -6,8 +6,10 @@ function Priloader(elid, params) {
 	this.params.width = params.width || 48;
 	this.params.height = params.height || 48;
 	this.params.bgColor = params.bgColor || false;
-	console.log(this.params);
+	this.params.speed = params.speed || 3; // speed goes from 1 to 5
+	
 	this.src = "spinner.png";
+	this.interval = 80 - this.params.speed*10;
 
 	this.elid = elid;
 	this.el = document.getElementById(elid);
@@ -29,10 +31,7 @@ function Priloader(elid, params) {
 	this.spinner.style.backgroundRepeat = "no-repeat";
 	this.spinner.style.backgroundPosition = "0% 0%";
 	this.spinner.style.backgroundSize = this.params.width+"px "+this.params.height+"px";
-
 	this.container.appendChild(this.spinner);
-
-	this.interval = 70;
 
 	this.start = function(){
 		var instance = this;
