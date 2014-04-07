@@ -15,8 +15,6 @@ function Priloader(elid, params) {
 	this.params.speed = this.params.speed < 1 ? 1 : this.params.speed;
 	this.params.speed = this.params.speed > 5 ? 5 : this.params.speed;
 	
-	// console.log(this.params);
-
 	this.src = "spinner.png";
 	this.interval = 80 - this.params.speed*10;
 
@@ -34,28 +32,15 @@ function Priloader(elid, params) {
 	}
 	this.el.appendChild(this.container);
 
-	this.spinner = document.createElement("canvas");
+	this.spinner = document.createElement("div");
+	this.spinner.setAttribute("class","priloader-spinner");
 	this.spinner.style.width = this.params.size+"px";
 	this.spinner.style.height = this.params.size+"px";
-	this.spinner.setAttribute("class","priloader-spinner");
-	this.container.appendChild(this.spinner);
-
-	this.img = new Image();
-	this.img.src = this.src;
-	
-	var instance = this;
-	this.img.onload = function() {
-		var ctx=instance.spinner.getContext("2d");
-			ctx.drawImage(instance.img, 0, 0);
-	}
-	
-	/*
 	this.spinner.style.backgroundImage = "url('"+this.src+"')";
 	this.spinner.style.backgroundRepeat = "no-repeat";
 	this.spinner.style.backgroundPosition = "0% 0%";
 	this.spinner.style.backgroundSize = this.params.size+"px "+this.params.size+"px";
 	this.container.appendChild(this.spinner);
-	*/
 
 	this.start = function(){
 		var instance = this;
@@ -72,7 +57,6 @@ function Priloader(elid, params) {
 
 	this.deg = 0;
 	this.animate = function() {
-		return;
 		this.deg = this.deg + 10 > 350 ? 0 : this.deg + 10;	
 		this.spinner.style.webkitTransform = 'rotate('+this.deg+'deg)'; 
 	    this.spinner.style.mozTransform    = 'rotate('+this.deg+'deg)'; 
