@@ -3,8 +3,8 @@ function Priloader(elid, params) {
 
 	params = params || {}
 	this.params = {};
-	this.params.width = params.width || 36;
-	this.params.height = params.height || 36;
+	this.params.width = params.width || 48;
+	this.params.height = params.height || 48;
 	this.params.bgColor = params.bgColor || false;
 	console.log(this.params);
 	this.src = "spinner.png";
@@ -28,7 +28,7 @@ function Priloader(elid, params) {
 	this.spinner.style.backgroundImage = "url('"+this.src+"')";
 	this.spinner.style.backgroundRepeat = "no-repeat";
 	this.spinner.style.backgroundPosition = "0% 0%";
-	this.spinner.style.backgroundSize = "36px 36px";
+	this.spinner.style.backgroundSize = this.params.width+"px "+this.params.height+"px";
 
 	this.container.appendChild(this.spinner);
 
@@ -49,7 +49,7 @@ function Priloader(elid, params) {
 
 	this.deg = 0;
 	this.animate = function() {
-		this.deg = this.deg + 10 > 360 ? 0 : this.deg + 10;	
+		this.deg = this.deg + 10 > 350 ? 0 : this.deg + 10;	
 		this.spinner.style.webkitTransform = 'rotate('+this.deg+'deg)'; 
 	    this.spinner.style.mozTransform    = 'rotate('+this.deg+'deg)'; 
     	this.spinner.style.msTransform     = 'rotate('+this.deg+'deg)'; 
