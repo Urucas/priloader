@@ -91,6 +91,38 @@
 <li>
 <code>color</code>: hex color for the spinner(webview must be support canvas)</li>
 </ul>
+
+
+<h1>
+<a name="settings--defaults" class="anchor" href="#settings--defaults"><span class="octicon octicon-link"></span></a>Demo</h1>
+<label>Size</label>
+<select id="size">
+	<option value="24">24</option>
+	<option value="36" selected="selected">36</option>
+	<option value="48">48</option>
+	<option value="72">72</option>
+</select>
+<label>Color</label>
+<input type="text" id="color" value="#fc5a17" />
+<input type="button" value="Test" onclick="test()"/>
+<br /><br />
+<div align="center">
+	<div id="preloader"></div>
+</div>
+<script src="priloader.js"></script>
+<script>
+	var priloader;
+	function test() {
+		document.getElementById("preloader").innerHTML = "";
+		var settings = {}
+		settings.size = document.getElementById("size").value;
+		settings.color = document.getElementById("color").value;
+		priloader = new Priloader("preloader", settings);
+		priloader.start();
+	}
+	test();
+</script>
+
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/Urucas">Urucas</a></p>
