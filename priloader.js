@@ -19,7 +19,8 @@ function Priloader(elid, params) {
 
 	this.params.className = params.className || false;
 
-	this.src = "spinner.png";
+	this.params.color = params.color || false;
+
 	this.interval = 80 - this.params.speed*10;
 
 	this.elid = elid;
@@ -44,16 +45,72 @@ function Priloader(elid, params) {
 	}
 	this.el.appendChild(this.container);
 
-	this.spinner = document.createElement("div");
-	this.spinner.setAttribute("class","priloader-spinner");
-	this.spinner.style.width = this.params.size+"px";
-	this.spinner.style.height = this.params.size+"px";
-	this.spinner.style.backgroundImage = "url("+this.base64img+")";
-	this.spinner.style.backgroundRepeat = "no-repeat";
-	this.spinner.style.backgroundPosition = "0% 0%";
-	this.spinner.style.backgroundSize = this.params.size+"px "+this.params.size+"px";
-	this.container.appendChild(this.spinner);
+		
+	this.hexToRGB = function(hexStr) {
+	    var col = {};
+    	col.r = parseInt(hexStr.substr(1,2),16);
+	    col.g = parseInt(hexStr.substr(3,2),16);
+    	col.b = parseInt(hexStr.substr(5,2),16);
+	    return col;
+	}
 
+	var instance = this;
+	var img = document.createElement("img");
+		img.src = this.base64img;
+	   	img.style.visibility = "hidden";
+		img.style.position = "absolute";
+
+	img.onload = function() {
+		
+		if(instance.params.color) {
+
+			var canvas = document.createElement("canvas");
+				canvas.setAttribute("width", img.offsetWidth+"px");
+				canvas.setAttribute("height", img.offsetHeight+"px");
+				canvas.style.visibility="hidden";
+				canvas.style.position="absolute";
+
+			var ctx = canvas.getContext("2d");
+			if(ctx) {
+
+				ctx.drawImage(img,0,0);
+
+				var imageData = ctx.getImageData(0,0,img.offsetWidth,img.offsetHeight);
+				var data = imageData.data;
+
+				var rgbfrom = instance.hexToRGB("#000000");
+				var rgbto = instance.hexToRGB(instance.params.color);
+				var r,g,b;
+				for(var x = 0, len = data.length; x < len; x+=4) {
+					r = data[x];
+					g = data[x+1];
+					b = data[x+2];
+					if((r == rgbfrom.r) && (g == rgbfrom.g) && (b == rgbfrom.b)) {
+						data[x] = rgbto.r;
+						data[x+1] = rgbto.g;
+						data[x+2] = rgbto.b;
+					} 
+				}
+				ctx.putImageData(imageData,0,0);
+				instance.base64img = canvas.toDataURL();
+			}
+			instance.el.removeChild(this);
+
+		}
+		instance.spinner = document.createElement("div");
+		instance.spinner.setAttribute("class","priloader-spinner");
+		instance.spinner.style.width = instance.params.size+"px";
+		instance.spinner.style.height = instance.params.size+"px";
+		instance.spinner.style.backgroundImage = "url("+instance.base64img+")";
+		instance.spinner.style.backgroundRepeat = "no-repeat";
+		instance.spinner.style.backgroundPosition = "0% 0%";
+		instance.spinner.style.backgroundSize = instance.params.size+"px "+instance.params.size+"px";
+		instance.container.appendChild(instance.spinner);
+
+	}	
+
+	this.el.appendChild(img);
+	
 	this.start = function(){
 		var instance = this;
 		this.deg = 0;
