@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Priloader by Urucas</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Priloader</h1>
+        <h2>pure javascript preloader</h2>
+        <a href="https://github.com/Urucas/priloader" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="priloader" class="anchor" href="#priloader"><span class="octicon octicon-link"></span></a>priloader</h1>
+
+<p>Simple javascript preloader animation, created to use on Android 2.3.x web apps because of .gif rare behavior</p>
+
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>Add the library to your html </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"priloader.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>Create a to container the preloader</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"priloader2"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+<p>Add the code</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="kd">var</span> <span class="nx">priloader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Priloader</span><span class="p">(</span><span class="s2">"priloader2"</span><span class="p">);</span> 
+  <span class="c1">// priloader.start() to start spinning &amp; shown</span>
+      <span class="nx">priloader</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+  <span class="c1">// priloader.stop() to stop spinning &amp; hide</span>
+      <span class="nx">peiloader</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+</pre></div>
+
+<h1>
+<a name="settings--defaults" class="anchor" href="#settings--defaults"><span class="octicon octicon-link"></span></a>Settings &amp; Defaults</h1>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// default settings</span>
+<span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">size</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+  <span class="nx">bgColor</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">speed</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nx">className</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">color</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="c1">// your own settgins</span>
+<span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">size</span><span class="o">:</span> <span class="mi">36</span><span class="p">,</span>
+  <span class="nx">speed</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nx">className</span><span class="o">:</span> <span class="s2">"myPreloader"</span><span class="p">,</span>
+  <span class="nx">color</span><span class="o">:</span> <span class="s2">"#fc5a17"</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">priloader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Priloader</span><span class="p">(</span><span class="s2">"priloader2"</span><span class="p">,</span> <span class="nx">settings</span><span class="p">);</span> 
+    <span class="nx">priloader</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</pre></div>
+
+<ul>
+<li>
+<code>size</code>: width(height) of the preloader animation. Min. value: 24, Max. value: 168</li>
+<li>
+<code>bgColor</code>: background color of the preloader container. Set to false as default</li>
+<li>
+<code>speed</code>: animation speed. Min. value: 1, Max. value: 5</li>
+<li>
+<code>className</code>: class to add in the main priloader container</li>
+<li>
+<code>color</code>: hex color for the spinner(webview must be support canvas)</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/Urucas/priloader/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/Urucas/priloader/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/Urucas/priloader"></a> is maintained by <a href="https://github.com/Urucas">Urucas</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
