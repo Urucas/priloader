@@ -3,6 +3,10 @@ priloader
 
 Simple javascript preloader animation, created to use on Android 2.3.x web apps because of .gif rare behavior
 
+Demo
+====
+<a href="http://urucas.github.io/priloader/" target="_blank">http://urucas.github.io/priloader/</a>
+
 Usage
 =====
 Add the library to your html 
