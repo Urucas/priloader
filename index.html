@@ -1,15 +1,31 @@
 <!DOCTYPE HTML>
 <html>
-<body>
-
-<div id="priloader"></div>
-
-<script src="priloader.js"></script>
-<script>
+<head>
+	<script src="/bower_components/platform/platform.js"></script>
 	
-var priloader = new Priloader("priloader", {color:"#fc5a17", size:36});
-		priloader.start();
+	<link rel="import" href="/elements/pri-loader.html">
 
-</script>
+</head>
+<body>
+	<table width="100%" style="text-align:center;">
+		<tr>
+			<th>Priloader with js</th>
+			<th>Priloader with polymer</th>
+		</tr>
+		<tr>
+			<td>
+				<div id="priloader"></div>
+				<script src="priloader.js"></script>
+				<script>
+					var priloader = new Priloader("priloader", {color:"#fc5a17", size:36});
+					priloader.start();
+
+				</script>
+			</td>
+			<td>
+				<pri-loader elid="priloader2" color="#fc5a17" size="56"></pri-loader>
+				<pri-loader elid="priloader3" color="#ff0000" size="36"></pri-loader>
+			</td>
+		</tr>
 </body>
 </html>

@@ -1,0 +1,32 @@
+{
+  "name": "priloader",
+  "main": "priloader.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Urucas/priloader",
+  "authors": [
+    "Bruno Alassia <vruno.alassia@gmail.com>"
+  ],
+  "description": "javascript priloader",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "js",
+    "javascript",
+    "preloader",
+    "polymer",
+    "loading",
+    "html"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.2.4"
+  }
+}
