@@ -259,3 +259,11 @@ footer {
 	padding-top:0px;
 	margin-top:0px;
 }
+
+.polymer-table tr{
+	vertical-align:top;
+}
+
+.polymer-table .highlight{
+	margin-top:20px;
+}
