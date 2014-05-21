@@ -31,7 +31,7 @@
         <h1>
 <a name="priloader" class="anchor" href="#priloader"><span class="octicon octicon-link"></span></a>priloader</h1>
 
-<p>Simple javascript preloader animation, created to use on Android 2.3.x web apps because of .gif rare behavior</p>
+<p>Simple javascript preloader animation, created to use on Android 2.3.x web apps because of .gif rare behavior.</p>
 
 <h1>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
@@ -122,6 +122,49 @@
 	}
 	test();
 </script>
+
+<br />
+<br />
+<br />
+<h1>
+<a name="polymer" class="anchor" href="#polymer"><span class="octicon octicon-link"></span></a>Polymer Usage</h1>
+
+<p>Add Polymer library to your html </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/bower_components/platform/platform.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>Import the pri-loader element </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"import"</span> <span class="na">href=</span><span class="s">"/elements/pri-loader.html"</span><span class="nt">/&gt;</span>
+</pre></div>
+
+<p>Add the pri-loader elements into your html </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;pri-loader</span> <span class="na">elid=</span><span class="s">"priloader3"</span> <span class="na">color=</span><span class="s">"#fc5a17"</span> <span class="na">state=</span><span class="s">"spin"</span><span class="nt">&gt;&lt;/pri-loader&gt;</span>
+</pre></div>
+
+<p>Change the state attribute to start(or stop) spinning the priloader</p>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;pri-loader</span> <span class="na">elid=</span><span class="s">"priloader3"</span> <span class="na">state=</span><span class="s">"spin"</span><span class="nt">&gt;&lt;/pri-loader&gt;</span>
+</pre></div>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;pri-loader</span> <span class="na">elid=</span><span class="s">"priloader3"</span> <span class="na">state=</span><span class="s">"stop"</span><span class="nt">&gt;&lt;/pri-loader&gt;</span>
+</pre></div>
+
+
+<h1>
+<a name="settings--defaults" class="anchor" href="#settings--defaults"><span class="octicon octicon-link"></span></a>Attributes</h1>
+
+<ul>
+	<li><code>elid</code>: polymer pri-loader unique id</li>
+	<li><code>state</code>: [ stop | spin ] changing this attribute will make the priloader start(or stop) spinning</li>
+	<li><code>size</code>: width(height) of the preloader animation. Min. value: 24, Max. value: 168</li>
+	<li><code>bgColor</code>: background color of the preloader container. Set to false as default</li>
+	<li><code>speed</code>: animation speed. Min. value: 1, Max. value: 5</li>
+	<li><code>className</code>: class to add in the main priloader container</li>
+	<li><code>color</code>: hex color for the spinner(webview must be support canvas)</li>
+</ul>
+
+
 
       </section>
       <footer>
