@@ -23,8 +23,13 @@ function Priloader(elid, params) {
 
 	this.interval = 80 - this.params.speed*10;
 
-	this.elid = elid;
-	this.el = document.getElementById(elid);
+	if(elid instanceof HTMLElement) {
+		this.el = elid;
+		this.elid = elid.id;
+	}else{
+		this.elid = elid;
+		this.el = document.getElementById(elid);
+	}
 	this.el.style.width = this.params.size+"px";
 	this.el.style.height = this.params.size+"px";
 	this.el.style.visibility = "hidden";

@@ -1,0 +1,36 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<script src="../priloader.js"></script>
+
+<polymer-element name="pri-loader" attributes="color elid size state">
+	<template>
+		<div id="{{elid}}">&nbsp;</div>
+	</template>
+	<script>
+		Polymer('pri-loader', {
+			color: "#000000",
+			state: "stop", // [ stop | spin ]
+			elid: 'priloader1',
+			size:48,
+			priloader: null,
+			ready: function() {
+				var obj = this.$;
+				var el = obj[this.elid];
+				var settings = {
+					color: this.color,
+					size: this.size
+				}
+				this.priloader = new Priloader(el, settings);
+			},
+			stateChanged: function(oldVal, newVal){
+				var pri = this.priloader;
+				if(oldVal == newVal) return;
+				if(newVal == 'spin') {
+					pri.start();
+				}else if(newVal == 'stop'){
+					pri.stop();
+				}
+			}
+		});
+	</script>
+</polymer-element>
+
