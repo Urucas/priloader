@@ -1,7 +1,7 @@
 priloader
 =========
 
-Simple javascript preloader animation, created to use on Android 2.3.x web apps because of .gif rare behavior
+Simple javascript preloader animation
 
 Demo
 ====
